@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+
+  get '/manifest.json', to: ->(_) { [204, {}, []] }
 end
