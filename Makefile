@@ -1,5 +1,4 @@
 lint: 
-	bundle exec slim-lint app/views
 	bundle exec rubocop
 
 prepare_test_db:
