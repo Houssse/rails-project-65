@@ -38,6 +38,8 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'pg'
 gem 'rollbar'
 
@@ -56,6 +58,9 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rails-omakase', require: false
   gem 'rubocop-rake', require: false
+
+  gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do

@@ -11,3 +11,5 @@ test: prepare_test_db
 test_integration:
 	# Запуск интеграционных тестов
 	bin/rails test test/integration
+setup-env:
+		cp .env.example .env
