@@ -1,28 +1,41 @@
-name: Lint
+name: Tests
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2.2'
-      
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: bundle install
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+          bundler-cache: true
 
-    - name: Run slim-lint
-      run: bundle exec slim-lint app/views
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
 
-    - name: Run Rubocop
-      run: bundle exec rubocop
+      - name: Set up database
+        env:
+          RAILS_ENV: test
+        run: |
+          bin/rails db:create
+          bin/rails db:schema:load
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+        run: |
+          make test
