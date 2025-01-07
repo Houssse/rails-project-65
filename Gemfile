@@ -43,6 +43,8 @@ gem 'omniauth-rails_csrf_protection'
 gem 'pg'
 gem 'sentry-rails'
 gem 'sentry-ruby'
+gem 'simple_form'
+gem 'slim-rails'
 gem 'stackprof'
 
 group :development, :test do
@@ -60,6 +62,8 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rails-omakase', require: false
   gem 'rubocop-rake', require: false
+  gem 'rubocop-slim', require: false
+  gem 'slim_lint', require: false
 
   gem 'dotenv-rails'
   gem 'faker'

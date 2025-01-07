@@ -4,7 +4,8 @@ require:
   - rubocop-rails
   - rubocop-rake
   - rubocop-capybara
-
+  - rubocop-slim
+  
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2.2

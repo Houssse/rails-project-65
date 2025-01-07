@@ -1,5 +1,6 @@
 lint: 
 	bundle exec rubocop
+	bundle exec slim-lint app/views
 
 prepare_test_db:
 	bin/rails db:test:prepare
@@ -11,5 +12,3 @@ test: prepare_test_db
 test_integration:
 	# Запуск интеграционных тестов
 	bin/rails test test/integration
-setup-env:
-		cp .env.example .env
