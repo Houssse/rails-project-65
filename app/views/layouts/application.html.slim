@@ -18,13 +18,8 @@ html
       type: 'module'
     = sanitize(Sentry.get_trace_propagation_meta)
 
-  body
-    nav
-      - if session[:user_id]
-        p Welcome, #{User.find(session[:user_id]).name}
-        = link_to 'Logout', logout_path, data: { turbo_method: :delete }
-      - else
-        = button_to 'Войти', auth_request_path('github'),
-          method: :post, data: { turbo: false }
-
-    = yield
+  body.d-flex.flex-column.h-100
+    = render 'shared/nav'
+    
+    main.container.flex-grow-1.mt-3
+      = yield
