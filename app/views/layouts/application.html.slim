@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = content_for(:title) || 'Rails Project 65'
+    title = content_for(:title) || 'Доска объявлений'
     meta name="viewport" content="width=device-width,initial-scale=1"
     meta name="apple-mobile-web-app-capable" content="yes"
     = csrf_meta_tags
@@ -20,6 +20,11 @@ html
 
   body.d-flex.flex-column.h-100
     = render 'shared/nav'
-    
-    main.container.flex-grow-1.mt-3
-      = yield
+
+    main
+      .mt-4.mb-5.pb-5
+        .container
+          .p-4.align-items-center.border.shadow.bg-white.rounded-3
+            = yield
+
+    = render 'shared/footer'
