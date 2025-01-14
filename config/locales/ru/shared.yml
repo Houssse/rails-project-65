@@ -1,0 +1,10 @@
+ru:
+  shared:
+    nav:
+      title: 'Доска объявлений'
+      home: 'Главная'
+      add: 'Добавить'
+      login: 'Вход'
+      logout: 'Выход'
+    footer:
+      text: 'Хекслет'

@@ -1,0 +1,11 @@
+ru:
+  simple_form:
+    required:
+      text: 'Обязательное поле'
+      mark: '*'
+    labels:
+      bulletin:
+        title: 'Заголовок'
+        description: 'Описание'
+        category_id: 'Категория'
+        image: 'Изображение'

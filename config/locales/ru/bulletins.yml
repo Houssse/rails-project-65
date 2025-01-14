@@ -1,0 +1,7 @@
+ru:
+  bulletins:
+    index:
+      title: 'Объявления'
+    new:
+      title: 'Добавить объявление'
+      submit: 'Создать объявление'
