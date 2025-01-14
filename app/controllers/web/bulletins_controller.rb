@@ -6,7 +6,7 @@ module Web
     before_action :authenticate_user!, only: %i[new create]
 
     def index
-      @bulletins = Bulletin.includes(:user)
+      @bulletins = Bulletin.includes(:user).order(created_at: :desc)
     end
 
     def show
