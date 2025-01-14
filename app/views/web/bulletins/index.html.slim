@@ -7,6 +7,7 @@
       - @bulletins.each do |bulletin|
         .col-3.pt-2
           .card.shadow-sm
+            = image_tag bulletin.image, class: 'card-img-top bulletin-image'
             .card-body
-              h5.card-title
-                = link_to bulletin.title, bulletin
+              = link_to bulletin_path(bulletin) do
+                h5.card-title = bulletin.title

@@ -17,3 +17,27 @@ main {
 footer {
   flex-shrink: 0;
 }
+
+.bulletin-image {
+  width: 100%; /* Заполняет ширину контейнера */
+  height: 200px; /* Фиксированная высота */
+  object-fit: cover; /* Сохраняет пропорции изображения */
+  border-radius: 4px; /* Немного скругляет углы */
+}
+
+.image-container {
+  max-width: 200px; // Контейнер занимает ширину родительского элемента
+  max-height: 400px; // Ограничиваем максимальную высоту
+  overflow: hidden; // Убираем выступающие части изображения
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin-bottom: 1rem; // Добавляем отступ снизу
+  
+  img {
+    max-width: 100%; // Изображение подстраивается под ширину контейнера
+    height: auto; // Сохраняется пропорция изображения
+    object-fit: cover; // Картинка заполняет контейнер
+    border-radius: 0.5rem; // Скруглённые углы
+  }
+}
