@@ -26,8 +26,20 @@ class BulletinTest < ActiveSupport::TestCase
     assert_not bulletin.valid?
   end
 
+  test 'should not be valid without a category' do
+    bulletin = Bulletin.new(title: 'Valid Title', description: 'Valid Description', user: @user, category: nil)
+
+    assert_not bulletin.valid?
+  end
+
   test 'should not be valid without a description' do
     bulletin = Bulletin.new(title: 'Valid Title', description: nil, user: @user, category: @category)
+
+    assert_not bulletin.valid?
+  end
+
+  test 'should not be valid with a description that is too long' do
+    bulletin = Bulletin.new(title: 'Valid Title', description: 'A' * 1001, user: @user, category: @category)
 
     assert_not bulletin.valid?
   end
