@@ -13,6 +13,6 @@ module AuthenticationConcern
   end
 
   def authenticate_user!
-    redirect_to root_path, alert: 'Пожалуйста, войдите в систему' unless current_user # rubocop:disable Rails/I18nLocaleTexts
+    redirect_to root_path unless current_user
   end
 end
