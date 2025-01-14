@@ -12,12 +12,16 @@ module ImageValidations
   def validate_image
     if image.attached?
       allowed_types = %w[image/jpeg image/png]
-      errors.add(:image, 'must be a JPEG, PNG') unless allowed_types.include?(image.content_type)
+      unless allowed_types.include?(image.content_type)
+        errors.add(:image, I18n.t('errors.messages.bulletin.image_type'))
+      end
 
       max_size = 5.megabytes
-      errors.add(:image, 'must be less than 5MB') if image.byte_size > max_size
+      if image.byte_size > max_size
+        errors.add(:image, I18n.t('errors.messages.bulletin.image_size'), max_size: max_size)
+      end
     else
-      errors.add(:image, 'is required')
+      errors.add(:image, I18n.t('errors.messages.bulletin.image'))
     end
   end
 end

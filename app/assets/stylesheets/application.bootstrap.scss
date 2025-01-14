@@ -41,3 +41,15 @@ footer {
     border-radius: 0.5rem; // Скруглённые углы
   }
 }
+
+.field_with_errors {
+  input, textarea, select {
+    border-color: #dc3545;
+  }
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

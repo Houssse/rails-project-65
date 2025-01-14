@@ -15,16 +15,16 @@ module Web
       session[:user_id] = user.id
 
       # Перенаправляем на главную страницу с сообщением об успехе
-      redirect_to root_path, notice: "Добро пожаловать, #{user.name}!"
-    rescue StandardError => e
+      redirect_to root_path, notice: I18n.t('shared.flash.notice')
+    rescue StandardError
       # В случае ошибки выводим сообщение
-      redirect_to root_path, alert: "Ошибка входа: #{e.message}"
+      redirect_to root_path
     end
 
     def destroy
       # Удаляем данные о пользователе из сессии (выход)
       session[:user_id] = nil
-      redirect_to root_path, notice: 'Вы вышли.' # rubocop:disable Rails/I18nLocaleTexts
+      redirect_to root_path, notice: I18n.t('shared.flash.notice')
     end
   end
 end

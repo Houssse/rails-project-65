@@ -8,3 +8,9 @@ ru:
       logout: 'Выход'
     footer:
       text: 'Хекслет'
+    flash:
+      notice: 'Успешно'
+      alert: 'Ошибка'
+    bulletin:
+      flash:
+        notice: 'Объявление было создано'
