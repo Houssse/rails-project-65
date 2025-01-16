@@ -6,11 +6,12 @@ ru:
       add: 'Добавить'
       login: 'Вход'
       logout: 'Выход'
+      admin: 'Админка'
     footer:
       text: 'Хекслет'
     flash:
       notice: 'Успешно'
-      alert: 'Ошибка'
+      not_admin: 'Эта секция доступна только для администраторов'
     bulletin:
       flash:
         notice: 'Объявление было создано'

@@ -4,7 +4,6 @@ ru:
       title: 'Объявления'
     new:
       title: 'Добавить объявление'
-      submit: 'Создать объявление'
   activerecord:
     errors:
       models:

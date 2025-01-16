@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  class AuthController < ApplicationController
+  class AuthController < Web::ApplicationController
     def callback
       # Получаем данные о пользователе от OmniAuth
       auth_data = request.env['omniauth.auth']
