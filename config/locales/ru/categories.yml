@@ -13,3 +13,10 @@ ru:
         delete: 'Удалить'
     new:
       title: 'Новая категория'
+  activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            name:
+              blank: 'Название не может быть пустым'

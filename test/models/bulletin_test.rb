@@ -4,7 +4,6 @@ require 'test_helper'
 
 class BulletinTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one)
     @category = categories(:one)
   end
 

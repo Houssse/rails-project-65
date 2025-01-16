@@ -22,23 +22,23 @@ module Web
         @category = Category.new(category_params)
 
         if @category.save
-          redirect_to categories_path
+          redirect_to categories_path, notice: I18n.t('shared.category.flash.notice.create')
         else
-          render :new
+          render :new, status: :unprocessable_entity
         end
       end
 
       def update
         if @category.update(category_params)
-          redirect_to categories_path
+          redirect_to categories_path, notice: I18n.t('shared.category.flash.notice.update')
         else
-          render :edit
+          render :edit, status: :unprocessable_entity
         end
       end
 
       def destroy
         @category.destroy
-        redirect_to categories_path
+        redirect_to categories_path, notice: I18n.t('shared.category.flash.notice.delete')
       end
 
       private
