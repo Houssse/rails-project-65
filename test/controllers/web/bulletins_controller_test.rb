@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'test_helper'
-
 module Web
   class BulletinsControllerTest < ActionDispatch::IntegrationTest
     test 'create bulletin' do
