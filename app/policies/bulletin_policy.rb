@@ -14,11 +14,11 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def create?
-    create?
+    user
   end
 
   def update?
-    update?
+    user
   end
 
   def send_to_moderation?

@@ -1,37 +1,45 @@
 ru:
   time:
     formats:
-      custom: "%d %b., %H:%M"
+      custom: '%d %b., %H:%M'
   datetime:
     distance_in_words:
-      half_a_minute: "половина минуты назад"
+      half_a_minute: 'полминуты'
       less_than_x_seconds:
-        one: "менее 1 секунды назад"
-        other: "около %{count} секунд назад"
+        one: 'меньше секунды'
+        other: 'меньше %{count} секунд'
       x_seconds:
-        one: "1 секунды назад"
-        other: "%{count} секунд"
+        one: '1 секунда'
+        few: '%{count} секунды'
+        other: '%{count} секунд'
       less_than_x_minutes:
-        one: "менее 1 минуты назад"
-        other: "около %{count} минут назад"
+        one: 'меньше минуты'
+        other: 'меньше %{count} минут'
       x_minutes:
-        one: "1 минута назад"
-        other: "около %{count} минут назад"
+        one: '1 минута'
+        few: '%{count} минуты'
+        other: '%{count} минут'
       about_x_hours:
-        one: "около 1 часа назад"
-        other: "около %{count} часов назад"
+        one: '1 час'
+        few: '%{count} часа'
+        other: '%{count} часов'
       x_days:
-        one: "1 день назад"
-        other: "%{count} дней назад"
+        one: '1 день'
+        few: '%{count} дня'
+        other: '%{count} дней'
       about_x_months:
-        one: "около 1 месяца назад"
-        other: "около %{count} месяцев назад"
+        one: '1 месяц'
+        few: '%{count} месяца'
+        other: '%{count} месяцев'
       x_months:
-        one: "1 месяц назад"
-        other: "%{count} месяцев назад"
+        one: '1 месяц'
+        few: '%{count} месяца'
+        other: '%{count} месяцев'
       about_x_years:
-        one: "около 1 года назад"
-        other: "около %{count} лет назад"
+        one: '1 год'
+        few: '%{count} года'
+        other: '%{count} лет'
       over_x_years:
-        one: "более 1 года назад"
-        other: "более %{count} лет назад"
+        one: '1 год'
+        few: '%{count} года'
+        other: '%{count} лет'

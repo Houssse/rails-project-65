@@ -1,0 +1,13 @@
+ru:
+  bulletins_on_moderation:
+    index:
+      title: 'Объявления на модерации'
+      thead:
+        title: 'Заголовок'
+        state: 'Состояние'
+        created_at: 'Дата создания'
+        actions: 'Действия'
+      button:
+        publish: 'Опубликовать'
+        reject: 'Вернуть'
+        archive: 'В архив'

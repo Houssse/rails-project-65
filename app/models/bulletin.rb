@@ -27,6 +27,10 @@ class Bulletin < ApplicationRecord
     end
   end
 
+  def state_label
+    I18n.t("activerecord.attributes.bulletin.state.#{aasm.current_state}")
+  end
+
   has_one_attached :image
   include ImageValidations
 

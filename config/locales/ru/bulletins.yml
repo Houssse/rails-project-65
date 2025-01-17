@@ -4,6 +4,8 @@ ru:
       title: 'Объявления'
     new:
       title: 'Добавить объявление'
+    edit:
+      title: 'Редактирование объявления'
   activerecord:
     errors:
       models:

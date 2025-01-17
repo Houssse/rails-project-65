@@ -8,7 +8,7 @@ module Web
 
       def index
         authorize Bulletin
-        @bulletins = Bulletin.includes(:user)
+        @bulletins = Bulletin.includes(:user).order(created_at: :desc)
       end
 
       def published
