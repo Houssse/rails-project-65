@@ -1,0 +1,25 @@
+h1 Мои обьявления
+hr
+= link_to 'Добавить объявление', new_bulletin_path
+
+table.table.table-borderless
+  thead
+    tr
+      th = 'Название'
+      th = 'Состояние'
+      th = 'Дата создания'
+      th = 'Действие'
+    tbody
+      - @bulletins.each do |bulletin|
+        tr
+          td = bulletin.title
+          td = bulletin.state
+          td = bulletin.created_at
+          td
+            = link_to 'Показать', bulletin_path(bulletin), class: 'me-1'
+            = link_to 'Редактировать', edit_bulletin_path(bulletin), class: 'me-1'
+            - if bulletin.state == 'draft'
+              = link_to 'На модерацию', send_to_moderation_bulletin_path(bulletin),
+               data: { turbo_method: :patch }, class: 'me-1'
+            - unless bulletin.archived?
+              = link_to 'В архив', archive_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'text-danger'

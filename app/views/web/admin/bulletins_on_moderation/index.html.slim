@@ -1,0 +1,21 @@
+h1 Объявления на модерации
+
+table.table.table-borderless
+  thead
+    tr
+      th = 'Название'
+      th = 'Состояние'
+      th = 'Дата создания'
+      th = 'Действие'
+    tbody
+      - @bulletins.each do |bulletin|
+        tr
+          td = link_to bulletin.title, bulletin_path(bulletin)
+          td = bulletin.state
+          td = bulletin.created_at
+          td
+            = link_to 'Опубликовать', published_bulletin_path(bulletin),
+             data: { turbo_method: :patch }, class: 'me-1'
+            = link_to 'Вернуть', rejected_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-1'
+            = link_to 'В архив', archive_admin_bulletin_path(bulletin),
+             data: { turbo_method: :patch }, class: 'text-danger'
