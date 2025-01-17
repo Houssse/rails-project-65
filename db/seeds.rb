@@ -7,16 +7,25 @@ Rake::Task['db:clean'].invoke
 Rails.logger.debug 'Заполнение базы данных...'
 
 image_files = Dir['./public/images/*.jpg']
+state = %w[draft published archived rejected under_moderation]
 
-40.times do
+10.times do
+  Category.create(name: Faker::Lorem.word)
+end
+
+t = rand(30..100)
+
+t.times do
   user = User.create!(name: Faker::Name.name, email: Faker::Internet.email)
-  image = File.open(image_files.sample)
-  category_name = Faker::Commerce.department(max: 1)
-  category = Category.find_or_create_by!(name: category_name)
+  File.open(image_files.sample, 'rb') do |image|
+    category = Category.all.sample
+    state_r = state.sample
 
-  Bulletin.create(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph,
-                  user: user, category: category, image: image)
-  image.close
+    Bulletin.create!(title: Faker::Food.allergen, description: Faker::Food.description,
+                     user: user, category: category, image: image, state: state_r)
+  end
+rescue ActiveRecord::RecordInvalid => e
+  Rails.logger.error "Ошибка при создании пользователя или объявления: #{e.message}"
 end
 
 Rails.logger.debug 'Готово'
