@@ -3,7 +3,7 @@
     .col-md-3
       = render 'shared/admin/menu'
     .col-md-9
-      h1 Объявления на модерации
+      h1 Объявления
       table.table.table-borderless
         thead
           tr
@@ -18,8 +18,7 @@
               td = bulletin.state
               td = bulletin.created_at
               td
-                = link_to 'Опубликовать', published_admin_path(bulletin),
-                 data: { turbo_method: :patch }, class: 'me-1'
-                = link_to 'Вернуть', rejected_admin_path(bulletin), data: { turbo_method: :patch }, class: 'me-1'
-                = link_to 'В архив', archive_admin_path(bulletin),
-                 data: { turbo_method: :patch }, class: 'text-danger'
+                = link_to 'Показать', bulletin_path(bulletin), class: 'me-1'
+                - unless bulletin.archived?
+                  = link_to 'Архивировать', archive_admin_path(bulletin),
+                  data: { turbo_method: :patch }, class: 'text-danger'

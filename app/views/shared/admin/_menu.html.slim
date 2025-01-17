@@ -1,0 +1,10 @@
+ul.nav.flex-column.nav-pills
+  li.nav-item
+    = link_to 'Объявления на модерации', bulletins_on_moderation_path,
+     class: "nav-link link-dark#{' active' if current_page?(bulletins_on_moderation_path)}"
+  li.nav-item
+    = link_to 'Все объявления', admin_index_path,
+     class: "nav-link link-dark#{' active' if current_page?(admin_index_path)}"
+  li.nav-item
+    = link_to 'Все категории', categories_path,
+     class: "nav-link link-dark#{' active' if current_page?(categories_path)}"

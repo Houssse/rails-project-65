@@ -4,21 +4,25 @@ module Web
   module Admin
     class BulletinsController < ApplicationController
       include AASM
-      before_action :set_bulletin
+      before_action :set_bulletin, except: :index
+
+      def index
+        @bulletins = Bulletin.includes(:user)
+      end
 
       def published
         @bulletin.approve!
-        redirect_to bulletins_on_moderation_path
+        redirect_to request.url
       end
 
       def rejected
         @bulletin.reject!
-        redirect_to bulletins_on_moderation_path
+        redirect_to request.url
       end
 
       def archive
         @bulletin.archive!
-        redirect_to bulletins_on_moderation_path
+        redirect_to request.url
       end
 
       private

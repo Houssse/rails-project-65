@@ -21,11 +21,11 @@ Rails.application.routes.draw do
     scope module: 'admin', path: 'admin' do
       resources :categories, except: :show
       get '/', to: 'bulletins_on_moderation#index', as: 'bulletins_on_moderation'
-      resources :bulletins, only: [] do
+      resources :bulletins, as: 'admin', only: [:index] do
         member do
           patch :published
           patch :rejected
-          patch :archive, as: 'archive_admin'
+          patch :archive
         end
       end
     end
