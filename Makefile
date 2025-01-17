@@ -1,3 +1,7 @@
+setup:
+	bin/setup
+	yarn install
+
 lint: 
 	bundle exec rubocop
 	bundle exec slim-lint app/views
