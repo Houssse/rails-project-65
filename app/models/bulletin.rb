@@ -27,10 +27,6 @@ class Bulletin < ApplicationRecord
     end
   end
 
-  def state_label
-    I18n.t("activerecord.attributes.bulletin.state.#{aasm.current_state}")
-  end
-
   has_one_attached :image
   include ImageValidations
 
@@ -40,4 +36,16 @@ class Bulletin < ApplicationRecord
   validates :category_id, numericality: { only_integer: true }
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[title category_id state]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[category]
+  end
+
+  def state_label
+    I18n.t("activerecord.attributes.bulletin.state.#{aasm.current_state}")
+  end
 end

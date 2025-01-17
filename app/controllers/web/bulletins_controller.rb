@@ -9,7 +9,8 @@ module Web
     before_action :authenticate_user!, only: %i[new create edit update]
 
     def index
-      @bulletins = Bulletin.includes(:user).published.order(created_at: :desc)
+      @q = Bulletin.ransack(params[:q])
+      @bulletins = @q.result(distinct: true).includes(:user).published.order(created_at: :desc)
     end
 
     def show
