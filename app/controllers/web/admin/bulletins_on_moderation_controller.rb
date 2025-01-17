@@ -6,6 +6,8 @@ module Web
       def index
         authorize Bulletin
         @bulletins = Bulletin.under_moderation
+                             .page(params[:page])
+                             .per(25)
       end
     end
   end

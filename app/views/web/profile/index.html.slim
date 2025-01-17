@@ -24,3 +24,4 @@ table.table.table-borderless
             - unless bulletin.archived?
               = link_to t('profile.index.button.archive'), archive_bulletin_path(bulletin),
                data: { turbo_method: :patch }, class: 'text-danger'
+= paginate @bulletins

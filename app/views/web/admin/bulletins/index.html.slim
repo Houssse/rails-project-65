@@ -23,3 +23,4 @@
                 - unless bulletin.archived?
                   = link_to t('bulletins.index.button.archive'), archive_admin_path(bulletin),
                   data: { turbo_method: :patch }, class: 'text-danger'
+      = paginate @bulletins
