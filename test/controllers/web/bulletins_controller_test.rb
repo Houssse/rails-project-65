@@ -6,8 +6,8 @@ module Web
       bulletin = Bulletin.new(
         title: 'title',
         description: 'description',
-        user: users(:one),
-        category: categories(:one)
+        user: @user,
+        category: @category
       )
 
       bulletin.image.attach(
@@ -26,8 +26,8 @@ module Web
       bulletin = Bulletin.new(
         title: 'title',
         description: 'description',
-        user: nil,
-        category: categories(:one)
+        user: @guest,
+        category: @category
       )
 
       bulletin.image.attach(
@@ -40,6 +40,38 @@ module Web
       bulletins = Bulletin.where(title: 'title')
 
       assert_equal 0, bulletins.count
+    end
+
+    test 'guest cannot update bulletin' do
+      @bulletin.image.attach(
+        io: Rails.root.join('test/fixtures/files/test_image.jpg').open,
+        filename: 'test_image.jpg',
+        content_type: 'image/jpg'
+      )
+      bulletin = @bulletin.update(
+        title: 'up title',
+        description: 'description',
+        user: @guest,
+        category: @category
+      )
+
+      assert_not bulletin
+    end
+
+    test 'user can update bulletin' do
+      @bulletin.image.attach(
+        io: Rails.root.join('test/fixtures/files/test_image.jpg').open,
+        filename: 'test_image.jpg',
+        content_type: 'image/jpg'
+      )
+      bulletin = @bulletin.update(
+        title: 'up title',
+        description: 'description',
+        user: @user,
+        category: @category
+      )
+
+      assert bulletin
     end
   end
 end

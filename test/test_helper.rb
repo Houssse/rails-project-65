@@ -18,7 +18,9 @@ module ActiveSupport
     def setup
       @user = users(:one)
       @admin = users(:two)
+      @guest = nil
       @category = categories(:one)
+      @bulletin = bulletins(:one)
     end
   end
 end

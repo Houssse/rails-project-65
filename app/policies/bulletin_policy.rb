@@ -34,7 +34,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def archive?
-    user.admin? || record.user_id == user&.id
+    user&.admin? || record.user_id == user&.id
   end
 
   class Scope < ApplicationPolicy::Scope
