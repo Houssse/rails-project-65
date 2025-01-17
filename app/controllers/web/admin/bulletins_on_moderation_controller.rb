@@ -4,6 +4,7 @@ module Web
   module Admin
     class BulletinsOnModerationController < ApplicationController
       def index
+        authorize Bulletin
         @bulletins = Bulletin.under_moderation
       end
     end

@@ -7,20 +7,24 @@ module Web
       before_action :set_bulletin, except: :index
 
       def index
+        authorize Bulletin
         @bulletins = Bulletin.includes(:user)
       end
 
       def published
+        authorize @bulletin
         @bulletin.approve!
         redirect_to request.url
       end
 
       def rejected
+        authorize @bulletin
         @bulletin.reject!
         redirect_to request.url
       end
 
       def archive
+        authorize @bulletin
         @bulletin.archive!
         redirect_to request.url
       end

@@ -17,16 +17,19 @@ module Web
     end
 
     def new
+      authorize Bulletin
       @bulletin = Bulletin.new
       @categories = Category.all
     end
 
     def edit
       @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
       @categories = Category.all
     end
 
     def create
+      authorize Bulletin
       @bulletin = Bulletin.new(bulletin_params)
       @bulletin.user = current_user
       @categories = Category.all
@@ -41,6 +44,7 @@ module Web
     def update
       @categories = Category.all
       @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
 
       if @bulletin.update(bulletin_params)
         redirect_to profile_path
@@ -50,15 +54,13 @@ module Web
     end
 
     def send_to_moderation
-      if @bulletin.may_submit?
-        @bulletin.submit!
-        redirect_to profile_path
-      else
-        render :index
-      end
+      authorize @bulletin
+      @bulletin.submit!
+      redirect_to profile_path
     end
 
     def archive
+      authorize @bulletin
       @bulletin.archive!
       redirect_to profile_path
     end
