@@ -62,13 +62,13 @@ module Web
     def send_to_moderation
       authorize @bulletin
       @bulletin.submit!
-      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.notice.send_to_moderation')
+      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.category.notice.send_to_moderation')
     end
 
     def archive
       authorize @bulletin
       @bulletin.archive!
-      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.notice.archive')
+      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.category.notice.archive')
     end
 
     private
