@@ -47,7 +47,7 @@ module Web
       authorize @bulletin
 
       if @bulletin.update(bulletin_params)
-        redirect_to profile_path
+        redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.update')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -56,13 +56,13 @@ module Web
     def send_to_moderation
       authorize @bulletin
       @bulletin.submit!
-      redirect_to profile_path
+      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.notice.send_to_moderation')
     end
 
     def archive
       authorize @bulletin
       @bulletin.archive!
-      redirect_to profile_path
+      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.notice.archive')
     end
 
     private

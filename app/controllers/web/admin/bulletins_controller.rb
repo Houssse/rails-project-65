@@ -14,19 +14,19 @@ module Web
       def published
         authorize @bulletin
         @bulletin.approve!
-        redirect_to request.url
+        redirect_to request.url, notice: I18n.t('shared.bulletin.flash.notice.publish')
       end
 
       def rejected
         authorize @bulletin
         @bulletin.reject!
-        redirect_to request.url
+        redirect_to request.url, notice: I18n.t('shared.bulletin.flash.notice.reject')
       end
 
       def archive
         authorize @bulletin
         @bulletin.archive!
-        redirect_to request.url
+        redirect_to request.url, notice: I18n.t('shared.bulletin.flash.notice.archive')
       end
 
       private
