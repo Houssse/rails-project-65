@@ -12,7 +12,7 @@ ru:
       login: 'Вход'
       logout: 'Выход'
       admin: 'Админка'
-      profile: 'Профиль'
+      profile: 'Мои объявления'
     footer:
       text: 'Хекслет'
     flash:

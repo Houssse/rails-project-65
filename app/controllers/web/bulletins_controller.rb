@@ -41,7 +41,7 @@ module Web
       @categories = Category.all
 
       if @bulletin.save
-        redirect_to @bulletin, notice: I18n.t('shared.bulletin.flash.notice')
+        redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.notice')
       else
         render :new, status: :unprocessable_entity
       end
