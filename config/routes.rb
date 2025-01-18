@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     # Admin routes
     scope module: 'admin', path: 'admin' do
       resources :categories, except: :show
-      get '/', to: 'bulletins_on_moderation#index', as: 'bulletins_on_moderation'
+      resources :bulletins_on_moderation, only: [:index], path: '/'
       resources :bulletins, as: 'admin', only: [:index] do
         member do
           patch :published
