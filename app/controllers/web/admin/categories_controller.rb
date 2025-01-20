@@ -30,7 +30,7 @@ module Web
 
       def update
         if @category.update(category_params)
-          redirect_to admincategories_path, notice: I18n.t('shared.category.flash.notice.update')
+          redirect_to admin_categories_path, notice: I18n.t('shared.category.flash.notice.update')
         else
           render :edit, status: :unprocessable_entity
         end
