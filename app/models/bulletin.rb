@@ -2,6 +2,17 @@
 
 class Bulletin < ApplicationRecord
   include AASM
+  include ImageValidations
+
+  has_one_attached :image
+
+  belongs_to :user
+  belongs_to :category
+
+  validates :category_id, numericality: { only_integer: true }
+  validates :title, presence: true, length: { minimum: 3, maximum: 50 }
+  validates :description, presence: true, length: { maximum: 1000 }
+  validates :image, presence: true
 
   aasm column: 'state' do
     state :draft, initial: true
@@ -26,16 +37,6 @@ class Bulletin < ApplicationRecord
       transitions from: %i[draft published rejected under_moderation], to: :archived
     end
   end
-
-  has_one_attached :image
-  include ImageValidations
-
-  belongs_to :user
-  belongs_to :category
-
-  validates :category_id, numericality: { only_integer: true }
-  validates :title, presence: true, length: { minimum: 3, maximum: 50 }
-  validates :description, presence: true, length: { maximum: 1000 }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[title category_id state]
