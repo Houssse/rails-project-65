@@ -5,9 +5,11 @@ one:
   description: DescriptionBuliten1
   user: one
   category: one
+  state: draft
 
 two:
   title: TittleBuliten2
   description: DescriptionBuliten2
   user: two
   category: two
+  state: draft
