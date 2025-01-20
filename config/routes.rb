@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     # Admin routes
     scope module: 'admin', path: 'admin' do
-      resources :categories
+      resources :categories, except: [:show], as: 'admin_categories'
       resources :bulletins_on_moderation, only: [:index], path: '/'
       resources :bulletins, as: 'admin', only: [:index] do
         member do
