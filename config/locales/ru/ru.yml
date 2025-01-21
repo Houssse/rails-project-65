@@ -10,3 +10,18 @@ ru:
           published: 'Опубликовано'
           under_moderation: 'На модерации'
           rejected: 'Возвращено'
+    errors:
+      models:
+        bulletin:
+          attributes:
+            image:
+              blank: "Изображение не может быть пустым"
+              content_type: "Неверный тип изображения. Поддерживаются только форматы: png, jpg, jpeg, webp."
+              max_size_error: "Размер изображения слишком большой (максимум 5мб)"
+            category:
+              required: "Категория обязательна для заполнения"
+          required: "Ошибка заполнения"
+      messages:
+        required: "Необходимо заполнить"
+
+        

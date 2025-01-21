@@ -2,17 +2,17 @@
 
 class Bulletin < ApplicationRecord
   include AASM
-  include ImageValidations
 
   has_one_attached :image
 
   belongs_to :user
   belongs_to :category
 
-  validates :category_id, numericality: { only_integer: true }
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :image, presence: true
+  validates :image, presence: true,
+                    blob: { content_type: %i[png jpg jpeg webp],
+                            size_range: 1..(5.megabytes) }
 
   aasm column: 'state' do
     state :draft, initial: true

@@ -19,13 +19,13 @@ module Web
       def published
         authorize @bulletin
         @bulletin.approve!
-        redirect_to admin_bulletins_path, notice: I18n.t('shared.bulletin.flash.category.notice.publish')
+        redirect_to request.url, notice: I18n.t('shared.bulletin.flash.category.notice.publish')
       end
 
       def rejected
         authorize @bulletin
         @bulletin.reject!
-        redirect_to admin_bulletins_path, notice: I18n.t('shared.bulletin.flash.category.notice.reject')
+        redirect_to request.url, notice: I18n.t('shared.bulletin.flash.category.notice.reject')
       end
 
       def archive
