@@ -89,3 +89,8 @@ ru:
           confirm:
             archive: 'Архивировать объявление?'
             send_to_moderation: 'Отправить объявление на модерацию?'
+    pagination:
+      first: "«"
+      previous: "‹"
+      next: "›"
+      last: "»" 
