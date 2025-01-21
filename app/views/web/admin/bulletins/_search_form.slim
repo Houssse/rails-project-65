@@ -3,14 +3,15 @@
     .col-6
       .form-group.mb-3.string.required.q_title_cont
         = f.search_field :title_cont, class: 'form-control'
-        small.form-text.text-muted = t('admin.bulletins.search_form.title')
+        small.form-text.text-muted = t('views.web.admin.bulletins.search_form.title')
     .col-3
       .form-group.mb-3.select.required.q_state_eq
         - state_options = Bulletin.aasm.states.map do |state|
           - [I18n.t("activerecord.attributes.bulletin.state.#{state.name}"), state.name.to_s]
 
         = f.select :state_eq, state_options, { include_blank: '' }, class: 'form-control select required'
-        small.form-text.text-muted = t('admin.bulletins.search_form.state')
+        small.form-text.text-muted = t('views.web.admin.bulletins.search_form.state')
     .col-3
-      = f.submit t('admin.bulletins.search_form.button.search'), class: 'btn btn-primary me-2'
-      = link_to t('admin.bulletins.search_form.button.reset'), admin_bulletins_path, class: 'btn btn-outline-primary'
+      = f.submit t('views.web.admin.bulletins.search_form.button.search'), class: 'btn btn-primary me-2'
+      = link_to t('views.web.admin.bulletins.search_form.button.reset'),
+       admin_bulletins_path, class: 'btn btn-outline-primary'

@@ -1,0 +1,91 @@
+ru:
+  views:
+    web:
+      admin:
+        bulletins:
+          search_form:
+            title: 'Название'
+            state: 'Состояние'
+            button:
+              search: 'Найти'
+              reset: 'Сбросить'
+          index:
+            title: 'Объявления'
+            thead:
+              title: 'Заголовок'
+              state: 'Состояние'
+              created_at: 'Дата создания'
+              actions: 'Действия'
+            button:
+              show: 'Показать'
+              archive: 'Архивировать'
+            confirm_archive: 'Архивировать объявление?'
+        bulletins_on_moderation:
+          index:
+            title: 'На модерации'
+            th:
+              title: 'Заголовок'
+              state: 'Состояние'
+              created_at: 'Дата создания'
+              actions: 'Действия'
+            button:
+              publish: 'Опубликовать'
+              reject: 'Отклонить'
+              archive: 'Архивировать'
+            confirm:
+              publish: 'Опубликовать объявление?'
+              reject: 'Отклонить объявление?'
+              archive: 'Архивировать объявление?'
+        categories:
+          edit:
+            title: 'Редактирование категории'
+          index:
+            title: 'Категории'
+            add: 'Добавить категорию'
+            id: 'ID'
+            name: 'Название'
+            actions: 'Действия'
+            button:
+              edit: 'Редактировать'
+              delete: 'Удалить'
+            confirm_delete: 'Удалить категорию?'
+          new:
+            title: 'Добавить категорию'
+      bulletins:
+        edit:
+          title: 'Редактирование объявления'
+        index:
+          title: 'Объявления'
+        new:
+          title: 'Добавить объявление'
+        search_form:
+          title: 'Название'
+          category: 'Категория'
+          button:
+            search: 'Искать'
+            reset: 'Сброс'
+      profile:
+        search_form:
+          title: 'Название'
+          state: 'Состояние'
+          button:
+            search: 'Найти'
+            reset: 'Сбросить'
+        index:
+          title: 'Мои объявления'
+          thead:
+            title: 'Заголовок'
+            category: 'Категория'
+            state: 'Состояние'
+            created_at: 'Дата создания'
+            updated_at: 'Дата обновления'
+            actions: 'Действия'
+          button:
+            add: 'Добавить объявление'
+            show: 'Показать'
+            edit: 'Редактировать'
+            send_to_moderation: 'Отправить на модерацию'
+            archive: 'Архивировать'
+          confirm:
+            archive: 'Архивировать объявление?'
+            send_to_moderation: 'Отправить объявление на модерацию?'

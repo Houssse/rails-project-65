@@ -1,0 +1,27 @@
+ru:
+  controllers:
+    application:
+      alert:
+        not_admin: 'Вы не администратор'
+    web:
+      bulletins:
+        notice:
+          create: 'Обьявление создано'
+          update: 'Обьявление обновлено'
+          archive: 'Обьявление архивировано'
+          send_to_moderation: 'Обьявление отправлено на модерацию'
+      auth:
+        notice:
+          logged_in: 'Вы успешно вошли'
+          logged_out: 'Вы успешно вышли'
+      admin:
+        bulletins:
+          notice:
+            archive: 'Обьявление архивировано'
+            reject: 'Обьявление отклонено'
+            publish: 'Обьявление опубликовано'
+        categories:
+          notice:
+            create: 'Категория создана'
+            delete: 'Категория удалена'
+            update: 'Категория обновлена'

@@ -7,7 +7,7 @@ ru:
       bulletin:
         title: 'Заголовок'
         description: 'Описание'
-        category_id: 'Категория'
+        category: 'Категория'
         image: 'Изображение'
       category:
         name: 'Название'

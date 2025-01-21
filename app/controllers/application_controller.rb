@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_admin
-    redirect_to root_path, alert: I18n.t('shared.flash.not_admin')
+    redirect_to root_path, alert: I18n.t('controllers.application.alert.not_admin')
   end
 end

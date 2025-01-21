@@ -11,7 +11,7 @@ class Bulletin < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :image, presence: true,
-                    blob: { content_type: %i[png jpg jpeg webp],
+                    blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'],
                             size_range: 1..(5.megabytes) }
 
   aasm column: 'state' do

@@ -1,0 +1,20 @@
+ru:
+  shared:
+    app:
+      title: 'Доска объявлений'
+    nav:
+      title: 'Доска объявлений'
+      home: 'Главная'
+      profile: 'Мои объявления'
+      add: 'Добавить'
+      admin: 'Админка'
+      logout: 'Выйти'
+      login: 'Войти'
+    admin:
+      menu:
+        moderation: 'На модерацию'
+        bulletins: 'Объявления'
+        categories: 'Категории'
+    footer:
+      text: 'Хекслет'
+    

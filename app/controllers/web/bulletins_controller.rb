@@ -41,7 +41,7 @@ module Web
       @categories = Category.all
 
       if @bulletin.save
-        redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.notice')
+        redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.create')
       else
         render :new, status: :unprocessable_entity
       end
@@ -53,7 +53,7 @@ module Web
       authorize @bulletin
 
       if @bulletin.update(bulletin_params)
-        redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.update')
+        redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.update')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -62,13 +62,13 @@ module Web
     def send_to_moderation
       authorize @bulletin
       @bulletin.submit!
-      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.category.notice.send_to_moderation')
+      redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.send_to_moderation')
     end
 
     def archive
       authorize @bulletin
       @bulletin.archive!
-      redirect_to profile_path, notice: I18n.t('shared.bulletin.flash.category.notice.archive')
+      redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.archive')
     end
 
     private

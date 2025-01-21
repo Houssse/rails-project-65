@@ -23,8 +23,8 @@ Rails.application.routes.draw do
       resources :bulletins_on_moderation, only: [:index], path: '/'
       resources :bulletins, as: 'admin_bulletins', only: [:index] do
         member do
-          patch :publish
-          patch :reject
+          patch :published
+          patch :rejected
           patch :archive
         end
       end

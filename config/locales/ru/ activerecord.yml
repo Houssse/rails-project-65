@@ -1,11 +1,4 @@
 ru:
-  bulletins:
-    index:
-      title: 'Объявления'
-    new:
-      title: 'Добавить объявление'
-    edit:
-      title: 'Редактирование объявления'
   activerecord:
     errors:
       models:
@@ -18,11 +11,17 @@ ru:
             description:
               blank: 'Описание не может быть пустым'
               too_long: 'Описание слишком большой длины (не может быть больше чем %{count} символов)'
-            category_id:
-              not_a_number: 'Категория не может отсутствовать'
-  errors:
-    messages:
+            category:
+              required: "Категория обязательна для заполнения"
+            image:
+              blank: "Изображение не может быть пустым"
+              max_size_error: "Размер изображения слишком большой (максимум 5 МБ)."
+              content_type: "Недопустимый формат изображения. Допустимы только: PNG, JPG, JPEG, WEBP."
+    attributes:
       bulletin:
-        image: 'Изображение не может быть пустым'
-        image_size: 'Изображение не может быть больше 5 МБ'
-        image_type: 'Фотография имеет недопустимый тип содержимого'
+        state:
+          archived: 'В архиве'
+          draft: 'Черновик'
+          published: 'Опубликовано'
+          under_moderation: 'На модерации'
+          rejected: 'Возвращено'
