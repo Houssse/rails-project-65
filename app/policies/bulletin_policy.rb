@@ -25,11 +25,11 @@ class BulletinPolicy < ApplicationPolicy
     record.user_id == user&.id
   end
 
-  def published?
+  def publish?
     user.admin?
   end
 
-  def rejected?
+  def reject?
     user.admin?
   end
 

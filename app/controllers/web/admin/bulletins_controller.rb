@@ -16,13 +16,13 @@ module Web
                        .per(25)
       end
 
-      def published
+      def publish
         authorize @bulletin
         @bulletin.approve!
         redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.publish')
       end
 
-      def rejected
+      def reject
         authorize @bulletin
         @bulletin.reject!
         redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.reject')
