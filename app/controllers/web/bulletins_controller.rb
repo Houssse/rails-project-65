@@ -61,14 +61,22 @@ module Web
 
     def send_to_moderation
       authorize @bulletin
-      @bulletin.submit!
-      redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.send_to_moderation')
+      if @bulletin.may_submit?
+        @bulletin.submit!
+        redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.send_to_moderation')
+      else
+        redirect_to profile_path, notice: I18n.t('')
+      end
     end
 
     def archive
       authorize @bulletin
-      @bulletin.archive!
-      redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.archive')
+      if @bulletin.may_archive?
+        @bulletin.archive!
+        redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.archive')
+      else
+        redirect_to profile_path, notice: I18n.t('')
+      end
     end
 
     private

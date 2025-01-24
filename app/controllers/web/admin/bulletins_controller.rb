@@ -19,20 +19,33 @@ module Web
 
       def publish
         authorize @bulletin
-        @bulletin.approve!
-        redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.publish')
+        if @bulletin.may_publish?
+          @bulletin.publish!
+          redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.publish')
+        else
+          redirect_to request.url, notice: I18n.t('')
+        end
       end
 
       def reject
         authorize @bulletin
-        @bulletin.reject!
-        redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.reject')
+
+        if @bulletin.may_reject?
+          @bulletin.reject!
+          redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.reject')
+        else
+          redirect_to request.url, notice: I18n.t('')
+        end
       end
 
       def archive
         authorize @bulletin
-        @bulletin.archive!
-        redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.archive')
+        if @bulletin.may_archive?
+          @bulletin.archive!
+          redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.archive')
+        else
+          redirect_to request.url, notice: I18n.t('')
+        end
       end
 
       private
