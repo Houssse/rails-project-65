@@ -14,6 +14,7 @@ module Web
                        .order(created_at: :desc)
                        .page(params[:page])
                        .per(25)
+        render params[:template] || :index
       end
 
       def publish

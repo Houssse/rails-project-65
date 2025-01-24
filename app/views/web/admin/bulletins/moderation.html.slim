@@ -12,7 +12,7 @@
             th = t('views.web.admin.bulletins_on_moderation.index.th.created_at')
             th = t('views.web.admin.bulletins_on_moderation.index.th.actions')
         tbody
-          - @bulletins.each do |bulletin|
+          - @bulletins.under_moderation.each do |bulletin|
             tr
               td = link_to bulletin.title, bulletin_path(bulletin)
               td = bulletin.state_label
