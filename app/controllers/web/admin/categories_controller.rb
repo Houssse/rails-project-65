@@ -37,8 +37,12 @@ module Web
       end
 
       def destroy
-        @category.destroy
-        redirect_to admin_categories_path, notice: I18n.t('controllers.web.admin.categories.notice.delete')
+        if @category.bulletins.present?
+          redirect_to admin_categories_path, notice: I18n.t(' ')
+        else
+          @category.destroy
+          redirect_to admin_categories_path, notice: I18n.t('controllers.web.admin.categories.notice.delete')
+        end
       end
 
       private
