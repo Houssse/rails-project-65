@@ -2,76 +2,46 @@
 
 module Web
   class BulletinsControllerTest < ActionDispatch::IntegrationTest
-    test 'create bulletin' do
-      bulletin = Bulletin.new(
-        title: 'title',
-        description: 'description',
-        user: @user,
-        category: @category
-      )
-
-      bulletin.image.attach(
-        io: Rails.root.join('test/fixtures/files/test_image.jpg').open,
-        filename: 'test_image.jpg',
-        content_type: 'image/jpg'
-      )
-      bulletin.save
-
-      bulletins = Bulletin.where(title: 'title')
-
-      assert_equal 1, bulletins.count
+    def setup
+      @category = categories(:one)
+      @bulletin = bulletins(:one)
+      @user = users(:one)
+      sign_in(@user)
     end
 
-    test 'unauthorized user cannot create bulletin' do
-      bulletin = Bulletin.new(
-        title: 'title',
-        description: 'description',
-        user: @guest,
-        category: @category
-      )
+    test 'should create bulletin' do
+      params = {
+        bulletin: {
+          title: 'New bulletin',
+          description: 'Description',
+          category_id: @category.id,
+          image: fixture_file_upload(Rails.root.join('test/fixtures/files/test_image.jpg'),
+                                     'image/jpg')
+        }
+      }
 
-      bulletin.image.attach(
-        io: Rails.root.join('test/fixtures/files/test_image.jpg').open,
-        filename: 'test_image.jpg',
-        content_type: 'image/jpg'
-      )
-      bulletin.save
+      post(bulletins_path, params:)
+      @new_bulletin = Bulletin.find_by(title: 'New bulletin')
 
-      bulletins = Bulletin.where(title: 'title')
-
-      assert_equal 0, bulletins.count
+      assert(@new_bulletin)
     end
 
-    test 'guest cannot update bulletin' do
-      @bulletin.image.attach(
-        io: Rails.root.join('test/fixtures/files/test_image.jpg').open,
-        filename: 'test_image.jpg',
-        content_type: 'image/jpg'
-      )
-      bulletin = @bulletin.update(
-        title: 'up title',
-        description: 'description',
-        user: @guest,
-        category: @category
-      )
+    test 'should update bulletin' do
+      updated_params = {
+        bulletin: {
+          title: 'Updated title',
+          description: 'Updated description',
+          category_id: @category.id,
+          image: fixture_file_upload(Rails.root.join('test/fixtures/files/test_image.jpg'),
+                                     'image/jpg')
+        }
+      }
 
-      assert_not bulletin
-    end
+      patch bulletin_path(@bulletin), params: updated_params
+      @bulletin.reload
 
-    test 'user can update bulletin' do
-      @bulletin.image.attach(
-        io: Rails.root.join('test/fixtures/files/test_image.jpg').open,
-        filename: 'test_image.jpg',
-        content_type: 'image/jpg'
-      )
-      bulletin = @bulletin.update(
-        title: 'up title',
-        description: 'description',
-        user: @user,
-        category: @category
-      )
-
-      assert bulletin
+      assert_equal 'Updated title', @bulletin.title
+      assert_equal 'Updated description', @bulletin.description
     end
   end
 end

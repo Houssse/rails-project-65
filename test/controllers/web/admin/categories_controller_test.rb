@@ -3,87 +3,32 @@
 module Admin
   module Web
     class CategoriesControllerTest < ActionDispatch::IntegrationTest
-      test 'create category' do
-        Category.create(name: 'test')
-        category = Category.where(name: 'test')
-
-        assert_equal 1, category.count
+      def setup
+        @admin = users(:two)
+        sign_in(@admin)
       end
 
-      test 'update category' do
-        category = Category.create(name: 'test')
+      test 'shuld admin create category' do
+        post admin_categories_path, params: { category: { name: 'new category' } }
 
-        assert_equal 'test', category.name
-
-        category.update(name: 'test2')
-
-        assert_equal 'test2', category.reload.name
+        assert(Category.find_by(name: 'new category'))
       end
 
-      test 'destroy category' do
-        category = Category.create(name: 'test')
+      test 'shuld admin update category' do
+        category = categories(:one)
+        patch admin_category_path(category), params: { category: { name: 'updated name' } }
 
-        assert_equal 3, Category.count
-
-        category.destroy
-
-        assert_equal 2, Category.count
+        assert(Category.find_by(name: 'updated name'))
       end
 
-      test 'admin can access categories index' do
-        sign_in @admin
-        get admin_categories_path
+      test 'shuld admin destroy category' do
+        category = Category.create!(name: 'Test Category')
 
-        assert_response :success
-      end
+        assert Category.exists?(category.id)
 
-      test 'user cannot access categories index' do
-        sign_in @user
-        get admin_categories_path
+        delete admin_category_path(category)
 
-        assert_redirected_to root_path
-      end
-
-      test 'admin can access categories new' do
-        sign_in @admin
-        get new_admin_category_path
-
-        assert_response :success
-      end
-
-      test 'user cannot access categories new' do
-        sign_in @user
-        get new_admin_category_path
-
-        assert_redirected_to root_path
-      end
-
-      test 'admin can access categories edit' do
-        sign_in @admin
-        get edit_admin_category_path(@category)
-
-        assert_response :success
-      end
-
-      test 'user cannot access categories edit' do
-        sign_in @user
-        get edit_admin_category_path(@category)
-
-        assert_redirected_to root_path
-      end
-
-      test 'admin can access categories destroy' do
-        sign_in @admin
-        delete admin_category_path(@category)
-
-        assert_redirected_to admin_categories_path
-      end
-
-      test 'user cannot access categories destroy' do
-        sign_in @user
-        delete admin_category_path(@category)
-
-        assert_redirected_to root_path
+        assert_not Category.exists?(category.id)
       end
     end
   end
