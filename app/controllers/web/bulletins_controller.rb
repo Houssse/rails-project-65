@@ -65,7 +65,7 @@ module Web
         @bulletin.submit!
         redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.send_to_moderation')
       else
-        redirect_to profile_path, notice: I18n.t('')
+        redirect_to profile_path, notice: I18n.t('controllers.errors')
       end
     end
 
@@ -75,7 +75,7 @@ module Web
         @bulletin.archive!
         redirect_to profile_path, notice: I18n.t('controllers.web.bulletins.notice.archive')
       else
-        redirect_to profile_path, notice: I18n.t('')
+        redirect_to profile_path, notice: I18n.t('controllers.errors')
       end
     end
 

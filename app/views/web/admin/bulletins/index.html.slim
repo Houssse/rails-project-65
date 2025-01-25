@@ -3,15 +3,15 @@
     .col-md-3
       = render 'shared/admin/menu'
     .col-md-9
-      h1 = t('views.web.admin.bulletins.index.title')
+      h1 = t('.title')
       = render 'search_form'
       table.table.table-borderless
         thead
           tr
-            th = t('views.web.admin.bulletins.index.thead.title')
-            th = t('views.web.admin.bulletins.index.thead.state')
-            th = t('views.web.admin.bulletins.index.thead.created_at')
-            th = t('views.web.admin.bulletins.index.thead.actions')
+            th = t('.thead.title')
+            th = t('.thead.state')
+            th = t('.thead.created_at')
+            th = t('.thead.actions')
         tbody
           - @bulletins.each do |bulletin|
             tr
@@ -19,9 +19,9 @@
               td = bulletin.state_label
               td = distance_of_time_in_words(bulletin.created_at, Time.current)
               td
-                = link_to t('views.web.admin.bulletins.index.button.show'), bulletin_path(bulletin), class: 'me-1'
+                = link_to t('.button.show'), bulletin_path(bulletin), class: 'me-1'
                 - unless bulletin.archived?
-                  = link_to t('views.web.admin.bulletins.index.button.archive'), archive_admin_bulletin_path(bulletin),
-                  data: { turbo_method: :patch, turbo_confirm: t('views.web.admin.bulletins.index.confirm_archive') },
+                  = link_to t('.button.archive'), archive_admin_bulletin_path(bulletin),
+                  data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') },
                    class: 'text-danger'
       = paginate @bulletins

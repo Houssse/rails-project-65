@@ -1,5 +1,6 @@
 ru:
   controllers:
+    errors: 'Ошибка'
     application:
       alert:
         not_admin: 'Вы не администратор'

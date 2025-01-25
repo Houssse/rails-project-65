@@ -23,7 +23,7 @@ module Web
           @bulletin.publish!
           redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.publish')
         else
-          redirect_to request.url, notice: I18n.t('')
+          redirect_to request.url, notice: I18n.t('controllers.errors')
         end
       end
 
@@ -34,7 +34,7 @@ module Web
           @bulletin.reject!
           redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.reject')
         else
-          redirect_to request.url, notice: I18n.t('')
+          redirect_to request.url, notice: I18n.t('controllers.errors')
         end
       end
 
@@ -44,7 +44,7 @@ module Web
           @bulletin.archive!
           redirect_to request.url, notice: I18n.t('controllers.web.admin.bulletins.notice.archive')
         else
-          redirect_to request.url, notice: I18n.t('')
+          redirect_to request.url, notice: I18n.t('controllers.errors')
         end
       end
 
